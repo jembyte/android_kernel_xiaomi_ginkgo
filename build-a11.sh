@@ -30,7 +30,7 @@ export LOCALVERSION
 
 if ! [ -d "${CLANG_DIR}" ]; then
 echo "Clang not found! Cloning to ${TC_DIR}..."
-if ! git clone --depth=1 -b clang-21.0 https://gitlab.com/kutemeikito/rastamod69-clang ${CLANG_DIR}; then
+if ! git clone --depth=1 -b clang-21.0 https://gitlab.com/kutemeikito/rastamod69-clang.git ${CLANG_DIR}; then
 echo "Cloning failed! Aborting..."
 exit 1
 fi
@@ -62,7 +62,7 @@ fi
 # Set function for override kernel name and variants
 if [[ $1 = "-k" || $1 = "--ksu" ]]; then
 echo -e "\nKSU Support, let's Make it On\n"
-curl -kLSs "https://raw.githubusercontent.com/kutemeikito/KernelSU-Next/next/kernel/setup.sh" | bash -s next
+curl -kLSs "https://raw.githubusercontent.com/jembyte/KernelSU-Next/next/kernel/setup.sh" | bash -s next
 sed -i 's/CONFIG_KSU=n/CONFIG_KSU=y/g' arch/arm64/configs/vendor/ginkgo-perf_defconfig
 sed -i 's/CONFIG_LOCALVERSION="-RyzenKernel"/CONFIG_LOCALVERSION="-RyzenKernel-KSU"/g' arch/arm64/configs/vendor/ginkgo-perf_defconfig
 sed -i 's/CONFIG_MSM_CAMERA_BOOTCLOCK_TIMESTAMP=y/#CONFIG_MSM_CAMERA_BOOTCLOCK_TIMESTAMP=is not set/g' arch/arm64/configs/vendor/ginkgo-perf_defconfig
@@ -96,7 +96,7 @@ echo -e "\nKernel compiled succesfully! Zipping up...\n"
 git restore arch/arm64/configs/vendor/ginkgo-perf_defconfig
 if [ -d "$AK3_DIR" ]; then
 cp -r $AK3_DIR AnyKernel3
-elif ! git clone -q https://github.com/kutemeikito/AnyKernel3; then
+elif ! git clone -q https://github.com/jembyte/AnyKernel3.git; then
 echo -e "\nAnyKernel3 repo not found locally and cloning failed! Aborting..."
 exit 1
 fi
