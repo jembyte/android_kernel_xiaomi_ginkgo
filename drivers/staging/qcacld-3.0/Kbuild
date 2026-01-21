@@ -2068,12 +2068,10 @@ INCS :=		-I$(WLAN_ROOT)/inc \
 INCS +=		$(WMI_INC) \
 		$(FWLOG_INC) \
 		$(CDP_INC) \
-		$(PKTLOG_INC) \
 		$(INIT_DEINIT_INC) \
 		$(SCHEDULER_INC) \
 		$(REGULATORY_INC) \
 		$(HTC_INC) \
-		$(DFS_INC) \
 		$(WCFG_INC) \
 
 INCS +=		$(HIF_INC) \
